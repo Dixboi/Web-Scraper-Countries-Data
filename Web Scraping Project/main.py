@@ -1,6 +1,6 @@
-import webScraperModule as wsm
 import requests
 from bs4 import BeautifulSoup
+import webScraperModule as wsm
 
 if __name__ == "__main__":
   
@@ -12,4 +12,6 @@ if __name__ == "__main__":
   all_capitals = soup.find_all(class_ = 'country-capital')
   all_populations = soup.find_all(class_ = 'country-population')
   all_areas = soup.find_all(class_ = 'country-area')
+
+  wsm.instructions()
 
