@@ -4,6 +4,11 @@ import sys
 
 def instructions():
   print('''
+
+  Data of countries from https://scrapethissite.com/pages/simple/
+  
+  I N S T R U C T I O N S
+  
   //a --> to display all information
   //gen + (country name) --> to display a country's information
                          Example: "//gen Philippines"
@@ -24,7 +29,7 @@ def instructions():
                                             Will display information about all area within that range
   //clear --> to clear screen
   //term --> to exit program
-  //help --> to display instructions
+  //hlp --> to display instructions
   ''')
 
 def allNames(countryNames):
@@ -40,12 +45,21 @@ def allAreas(countryAreas):
   return [area.get_text() for area in countryAreas]
 
 def HEADER():
-  print("#########################################################################################")
-  print("# NAME                # CAPITAL             # POPULATION          # AREA (km^2)         #")
-  print("#########################################################################################")
+  print("#################################################################################################################################")
+  print("# NAME                          # CAPITAL                       # POPULATION                              # AREA (km^2)         #")
+  print("#################################################################################################################################")
 
 def FOOTER():
-  print("#########################################################################################")
+  print("#################################################################################################################################")
+
+def DISPLAY(country_name, country_capital, country_population, country_area):
+  length = 30
+  name = "# " + country_name + (" " * (length - len(country_name)) + "#")
+  capital = country_capital + (" " * (length - len(country_capital)) + "#")
+  population = str(country_population) + (" " * (length - len(str(country_population))) + "#")
+  area = str(country_area) + (" " * (length - len(str(country_area))) + "#")
+  print(name, capital, population, area)
+  
 
 def displayAllInfos(countryNames, countryCapitals, countryPopulations, countryAreas):
   Names = allNames(countryNames)
@@ -54,14 +68,8 @@ def displayAllInfos(countryNames, countryCapitals, countryPopulations, countryAr
   Areas = allAreas(countryAreas)
   counter = 0
   HEADER()
-  length = 20
   for info in range(len(Names)):
-    if len(Names[counter]) < length:
-      Names[counter] = "# " + Names[counter] + (" " * (length - len(Names[counter])) + "#")
-      Capitals[counter] = Capitals[counter] + (" " * (length - len(Capitals[counter])) + "#")
-      Populations[counter] = Populations[counter] + (" " * (length - len(Populations[counter])) + "#")
-      Areas[counter] = Areas[counter] + (" " * (length - len(Areas[counter])))
-      print(Names[counter], Capitals[counter], Populations[counter], Areas[counter] + "#")
+    DISPLAY(Names[counter], Capitals[counter], Populations[counter], Areas[counter])
     counter += 1
   FOOTER()
 
@@ -72,14 +80,7 @@ def findSpecificInfoGENERAL(findName, countryNames, countryCapitals, countryPopu
   Areas = allAreas(countryAreas)
   position = Names.index(findName)
   HEADER()
-  length = 20
-  for info in range(len(Names)):
-    if len(Names[position]) < length:
-      Names[position] = "# " + Names[position] + (" " * (length - len(Names[position])) + "#")
-      Capitals[position] = Capitals[position] + (" " * (length - len(Capitals[position])) + "#")
-      Populations[position] = Populations[position] + (" " * (length - len(Populations[position])) + "#")
-      Areas[position] = Areas[position] + (" " * (length - len(Areas[position])))
-      print(Names[position], Capitals[position], Populations[position], Areas[position] + "#")
+  DISPLAY(Names[position], Capitals[position], Populations[position], Areas[position])
   FOOTER()
 
 def findSpecificInfoNAMES(key, countryNames, countryCapitals, countryPopulations, countryAreas):
@@ -89,16 +90,11 @@ def findSpecificInfoNAMES(key, countryNames, countryCapitals, countryPopulations
   Areas = allAreas(countryAreas)
   pattern = "^{}".format(key)
   HEADER()
-  length = 20
   for NAME in Names:
     searching = re.search(pattern, NAME)
     if searching:
       position = Names.index(NAME)
-      Names[position] = "# " + Names[position] + (" " * (length - len(Names[position])) + "#")
-      Capitals[position] = Capitals[position] + (" " * (length - len(Capitals[position])) + "#")
-      Populations[position] = Populations[position] + (" " * (length - len(Populations[position])) + "#")
-      Areas[position] = Areas[position] + (" " * (length - len(Areas[position])))
-      print(Names[position], Capitals[position], Populations[position], Areas[position] + "#")
+      DISPLAY(Names[position], Capitals[position], Populations[position], Areas[position])
   FOOTER()
      
   
@@ -109,33 +105,26 @@ def findSpecificInfoCAPITALS(key, countryNames, countryCapitals, countryPopulati
   Areas = allAreas(countryAreas)
   pattern = "^{}".format(key)
   HEADER()
-  length = 20
   for CAPITAL in Capitals:
     searching = re.search(pattern, CAPITAL)
     if searching:
       position = Capitals.index(CAPITAL)
-      Names[position] = "# " + Names[position] + (" " * (length - len(Names[position])) + "#")
-      Capitals[position] = Capitals[position] + (" " * (length - len(Capitals[position])) + "#")
-      Populations[position] = Populations[position] + (" " * (length - len(Populations[position])) + "#")
-      Areas[position] = Areas[position] + (" " * (length - len(Areas[position])))
-      print(Names[position], Capitals[position], Populations[position], Areas[position] + "#")
+      DISPLAY(Names[position], Capitals[position], Populations[position], Areas[position])
   FOOTER()
-      
+
 def findSpecificInfoPOPULATIONS(startRange, endRange, countryNames, countryCapitals, countryPopulations, countryAreas):
   Names = allNames(countryNames)
   Capitals = allCapitals(countryCapitals)
   Populations = list(map(lambda value: int(value), allPopulations(countryPopulations)))
   Areas = allAreas(countryAreas)
   HEADER()
-  length = 20
+  startRange = int(startRange)
+  endRange = int(endRange)
+  length = 30
   for POPULATION in Populations:
     if startRange <= POPULATION <= endRange:
       position = Populations.index(POPULATION)
-      Names[position] = "# " + Names[position] + (" " * (length - len(Names[position])) + "#")
-      Capitals[position] = Capitals[position] + (" " * (length - len(Capitals[position])) + "#")
-      Populations[position] = str(Populations[position]) + (" " * (length - len(str(Populations[position]))) + "#")
-      Areas[position] = Areas[position] + (" " * (length - len(Areas[position])))
-      print(Names[position], Capitals[position], Populations[position], Areas[position] + "#")
+      DISPLAY(Names[position], Capitals[position], Populations[position], Areas[position])
   FOOTER()
       
 def findSpecificInfoAREAS(startRange, endRange, countryNames, countryCapitals, countryPopulations, countryAreas):
@@ -144,15 +133,12 @@ def findSpecificInfoAREAS(startRange, endRange, countryNames, countryCapitals, c
   Populations = allPopulations(countryPopulations)
   Areas = list(map(lambda value: float(value), allAreas(countryAreas)))
   HEADER()
-  length = 20
+  startRange = int(startRange)
+  endRange = int(endRange)
   for AREAS in Areas:
     if startRange <= AREAS <= endRange:
       position = Areas.index(AREAS)
-      Names[position] = "# " + Names[position] + (" " * (length - len(Names[position])) + "#")
-      Capitals[position] = Capitals[position] + (" " * (length - len(Capitals[position])) + "#")
-      Populations[position] = Populations[position] + (" " * (length - len(Populations[position])) + "#")
-      Areas[position] = str(Areas[position]) + (" " * (length - len(str(Areas[position]))))
-      print(Names[position], Capitals[position], Populations[position], Areas[position] + "#")
+      DISPLAY(Names[position], Capitals[position], Populations[position], Areas[position])
   FOOTER()
 
 def clearScreen():
