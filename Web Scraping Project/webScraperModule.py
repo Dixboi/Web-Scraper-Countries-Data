@@ -12,24 +12,25 @@ def instructions():
   
   I N S T R U C T I O N S
   
-  //a --> to display all information
-  //gen + (country name) --> to display a country's information
-                         Example: "//gen Philippines"
-                         Will display information about Philippines
-  //co + (starting letter/s) --> to display a country's name information starting with that letter/s
-                         Exaple: "//co P"
-                         Will display information about all countries starting with letter 'P'
-  //ca + (starting letter/s) --> to display a country's capital information starting with that letter/s
-                         Example: "//ca P"
-                         Will display information about all capitals starting with letter 'P'
-  //pop + (starting number) + (ending number) --> to display a country's population information
-                                                  based on that range
-                                            Example: "//pop 1000 2000"
-                                            Will display information about all population within that range
-  //ar + (starting number) + (ending number) --> to display a country's area information
-                                                 based on that range
-                                            Example: "//ar 1000 2000"
-                                            Will display information about all area within that range
+  COMMAND                                     FUNCTION
+  //a                                           --> to display all information
+  //gen + (country name)                        --> to display a country's information
+                                              Example: "//gen Philippines"
+                                              Will display information about Philippines
+  //co + (starting letter/s)                    --> to display a country's name information starting with that letter/s
+                                              Example: "//co P"
+                                              Will display information about all countries starting with letter 'P'
+  //ca + (starting letter/s)                    --> to display a country's capital information starting with that letter/s
+                                             Example: "//ca P"
+                                             Will display information about all capitals starting with letter 'P'
+  //pop + (starting number) + (ending number)   --> to display a country's population information
+                                                    based on that range
+                                              Example: "//pop 1000 2000"
+                                              Will display information about all population within that range
+  //ar + (starting number) + (ending number)    --> to display a country's area information
+                                                    based on that range
+                                              Example: "//ar 1000 2000"
+                                              Will display information about all area within that range
   //clear --> to clear screen
   //term --> to exit program
   //hlp --> to display instructions
