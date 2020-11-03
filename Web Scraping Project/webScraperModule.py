@@ -2,6 +2,9 @@ import re
 import os
 import sys
 
+'''
+Show instructions for the main module
+'''
 def instructions():
   print('''
 
@@ -32,26 +35,47 @@ def instructions():
   //hlp --> to display instructions
   ''')
 
+'''
+List of all country's name
+'''
 def allNames(countryNames):
   return [name.get_text().replace("  ", "").replace("\n", "") for name in countryNames]
 
+'''
+List of all country's capital
+'''
 def allCapitals(countryCapitals):
   return [capital.get_text() for capital in countryCapitals]
 
+'''
+List of all country's population
+'''
 def allPopulations(countryPopulations):
   return [population.get_text() for population in countryPopulations]
 
+'''
+List of all country's area
+'''
 def allAreas(countryAreas):
   return [area.get_text() for area in countryAreas]
 
+'''
+Displays the header of the table when info is presented
+'''
 def HEADER():
   print("#################################################################################################################################")
   print("# NAME                          # CAPITAL                       # POPULATION                              # AREA (km^2)         #")
   print("#################################################################################################################################")
 
+'''
+Displays the footer of the table when info is presented
+'''
 def FOOTER():
   print("#################################################################################################################################")
 
+'''
+Displays the needed info when called
+'''
 def DISPLAY(country_name, country_capital, country_population, country_area):
   length = 30
   name = "# " + country_name + (" " * (length - len(country_name)) + "#")
@@ -60,7 +84,9 @@ def DISPLAY(country_name, country_capital, country_population, country_area):
   area = str(country_area) + (" " * (length - len(str(country_area))) + "#")
   print(name, capital, population, area)
   
-
+'''
+Displays all information from all countries 
+'''
 def displayAllInfos(countryNames, countryCapitals, countryPopulations, countryAreas):
   Names = allNames(countryNames)
   Capitals = allCapitals(countryCapitals)
@@ -73,6 +99,9 @@ def displayAllInfos(countryNames, countryCapitals, countryPopulations, countryAr
     counter += 1
   FOOTER()
 
+'''
+Displays all information from a specific country
+'''
 def findSpecificInfoGENERAL(findName, countryNames, countryCapitals, countryPopulations, countryAreas):
   Names = allNames(countryNames)
   Capitals = allCapitals(countryCapitals)
@@ -83,6 +112,9 @@ def findSpecificInfoGENERAL(findName, countryNames, countryCapitals, countryPopu
   DISPLAY(Names[position], Capitals[position], Populations[position], Areas[position])
   FOOTER()
 
+'''
+Displays all information from a country where the name starts from the 'key'
+'''
 def findSpecificInfoNAMES(key, countryNames, countryCapitals, countryPopulations, countryAreas):
   Names = allNames(countryNames)
   Capitals = allCapitals(countryCapitals)
@@ -97,7 +129,9 @@ def findSpecificInfoNAMES(key, countryNames, countryCapitals, countryPopulations
       DISPLAY(Names[position], Capitals[position], Populations[position], Areas[position])
   FOOTER()
      
-  
+'''
+Displays all information from a country where the capital starts from the 'key'
+'''
 def findSpecificInfoCAPITALS(key, countryNames, countryCapitals, countryPopulations, countryAreas):
   Names = allNames(countryNames)
   Capitals = allCapitals(countryCapitals)
@@ -112,6 +146,9 @@ def findSpecificInfoCAPITALS(key, countryNames, countryCapitals, countryPopulati
       DISPLAY(Names[position], Capitals[position], Populations[position], Areas[position])
   FOOTER()
 
+'''
+Displays all information from a country where the population is in the middle of the range specified
+'''
 def findSpecificInfoPOPULATIONS(startRange, endRange, countryNames, countryCapitals, countryPopulations, countryAreas):
   Names = allNames(countryNames)
   Capitals = allCapitals(countryCapitals)
@@ -127,6 +164,9 @@ def findSpecificInfoPOPULATIONS(startRange, endRange, countryNames, countryCapit
       DISPLAY(Names[position], Capitals[position], Populations[position], Areas[position])
   FOOTER()
       
+'''
+Displays all information from a country where the area is in the middle of the range specified
+'''
 def findSpecificInfoAREAS(startRange, endRange, countryNames, countryCapitals, countryPopulations, countryAreas):
   Names = allNames(countryNames)
   Capitals = allCapitals(countryCapitals)
@@ -141,11 +181,18 @@ def findSpecificInfoAREAS(startRange, endRange, countryNames, countryCapitals, c
       DISPLAY(Names[position], Capitals[position], Populations[position], Areas[position])
   FOOTER()
 
+'''
+If run on console --> clears the screen then prints the instructions
+IF run on IDLE -----> prints 40 blank lines then prints the instructions
+'''
 def clearScreen():
   print("\n" * 40)
   os.system('cls')
   instructions()
 
+'''
+Asks the user to finalize the termination of the program
+'''
 def exitProgram():
   print("Are you sure you want to exit the program?")
   print("Type 'y' for yes, Press 'Enter' for no")
