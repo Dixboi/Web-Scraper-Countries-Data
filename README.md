@@ -1,4 +1,4 @@
-## Web-Scraper-Countries-Data
+## Applying Web Scraping to Extract Data About Countries
 
 **Project Description:** Data scraped from *https://scrapethissite.com/pages/simple/* that displays some information about a country.
 
