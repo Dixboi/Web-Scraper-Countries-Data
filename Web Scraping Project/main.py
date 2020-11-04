@@ -18,30 +18,31 @@ if __name__ == "__main__":
   
   while True:
     command = input(user).split()
-    if command[0] == "//term":
-      wsm.exitProgram()
-    elif command[0] != "//term":
-      try:
-        if command[0] == "//a":
-          wsm.displayAllInfos(all_names, all_capitals, all_populations, all_areas)
-        elif command[0] == "//gen": 
-          wsm.findSpecificInfoGENERAL(command[1], all_names, all_capitals, all_populations, all_areas)
-        elif command[0] == "//co":
-          wsm.findSpecificInfoNAMES(command[1], all_names, all_capitals, all_populations, all_areas)
-        elif command[0] == "//ca":
-          wsm.findSpecificInfoCAPITALS(command[1], all_names, all_capitals, all_populations, all_areas)
-        elif command[0] == "//pop":
-          wsm.findSpecificInfoPOPULATIONS(command[1], command[2], all_names, all_capitals, all_populations, all_areas)
-        elif command[0] == "//ar":
-          wsm.findSpecificInfoAREAS(command[1], command[2], all_names, all_capitals, all_populations, all_areas)
-        elif command[0] == "//clear":
-          wsm.clearScreen()
-        elif command[0] == "//hlp":
-          wsm.instructions()
-        else:
-          command = " ".join(command)
-          print(f'"{command}" is not recognized as a valid command in this program.')
-      except:
-        print("Invalid entry.")
-    else:
-      print(f'"{command}" is not recognized as a valid command in this program.')
+    if len(command) > 0:
+      if command[0] == "//term":
+        wsm.exitProgram()
+      elif command[0] != "//term":
+        try:
+          if command[0] == "//a":
+            wsm.displayAllInfos(all_names, all_capitals, all_populations, all_areas)
+          elif command[0] == "//gen": 
+            wsm.findSpecificInfoGENERAL(command[1], all_names, all_capitals, all_populations, all_areas)
+          elif command[0] == "//co":
+            wsm.findSpecificInfoNAMES(command[1], all_names, all_capitals, all_populations, all_areas)
+          elif command[0] == "//ca":
+            wsm.findSpecificInfoCAPITALS(command[1], all_names, all_capitals, all_populations, all_areas)
+          elif command[0] == "//pop":
+            wsm.findSpecificInfoPOPULATIONS(command[1], command[2], all_names, all_capitals, all_populations, all_areas)
+          elif command[0] == "//ar":
+            wsm.findSpecificInfoAREAS(command[1], command[2], all_names, all_capitals, all_populations, all_areas)
+          elif command[0] == "//clear":
+            wsm.clearScreen()
+          elif command[0] == "//hlp":
+            wsm.instructions()
+          else:
+            command = " ".join(command)
+            print(f'"{command}" is not recognized as a valid command in this program.')
+        except:
+          print("Invalid entry.")
+      else:
+        print(f'"{command}" is not recognized as a valid command in this program.')
