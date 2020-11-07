@@ -7,3 +7,5 @@ To install ***beautifulsoup4***, open your command line then:
 
 To install ***requests***, open your command line then:
 > pip install requests
+
+This program uses python to scrape the website. The data that can be scraped are country's name, country's capital name, population, and its area in square kilometers.
